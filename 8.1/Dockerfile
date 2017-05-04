@@ -7,8 +7,7 @@ VOLUME /var/lib/pgsql
 COPY start.sh /
 
 # install postgres 8.1.23
-RUN yum --disablerepo=* --enablerepo=C5.10-base update && yum -y --disablerepo=* --enablerepo=C5.10-base install postgresql-server.i386 \
-	&& yum -y  --disablerepo=* --enablerepo=C5.10-base clean all \
+RUN yum --disablerepo=* --enablerepo=C5.10-base update && yum -y --disablerepo=* --enablerepo=C5.10-base install postgresql-server.i386 && yum -y  --disablerepo=* --enablerepo=C5.10-base clean all \
 	&& chmod +x /start.sh
 
 EXPOSE 5432/tcp
