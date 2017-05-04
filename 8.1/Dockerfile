@@ -6,8 +6,6 @@ MAINTAINER Thomas Edwin Santosa <thomas@katalisindonesia.com>
 VOLUME /var/lib/pgsql
 COPY start.sh /
 
-RUN localedef -f UTF-8 -i en_US en_US.UTF-8
-
 #Indonesian locale
 
 RUN rm /etc/yum.repos.d/CentOS-Base.repo
