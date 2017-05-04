@@ -8,7 +8,9 @@ COPY start.sh /
 
 RUN rm /etc/yum.repos.d/CentOS-Base.repo
 # install postgres 8.1.23
-
+#RUN cat /etc/yum.repos.d/CentOS-Vault.repo
+#RUN yum --verbose --enablerepo=C5.10-* install yumex
+RUN sed -i 's/\$basearch/i386/g' /etc/yum.repos.d/CentOS-Vault.repo
 RUN yum --verbose --enablerepo=C5.10-base repolist
 RUN yum --verbose --enablerepo=C5.10-base makecache
 RUN yum --enablerepo=C5.10-base list postgresql-server
