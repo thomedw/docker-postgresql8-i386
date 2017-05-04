@@ -8,11 +8,11 @@ COPY start.sh /
 
 #Indonesian locale
 
-RUN rm /etc/yum.repos.d/CentOS-Base.repo
+RUN rm /etc/yum.repos.d/CentOS-*.repo
 # install postgres 8.1.23
 RUN sed -i 's/\$basearch/i386/g' /etc/yum.repos.d/CentOS-Vault.repo
-RUN yum --enablerepo=C5.10-base list postgresql-server
-RUN yum  --enablerepo=C5.10-base update && yum -y --enablerepo=C5.10-base reinstall postgresql-server.i386 glibc-common && yum -y --enablerepo=C5.10-base clean all \
+RUN yum --enablerepo=C5.10-* list postgresql-server
+RUN yum  --enablerepo=C5.10-* update && yum -y --enablerepo=C5.10-* install postgresql-server.i386 && yum -y --enablerepo=C5.10-* reinstall glibc-common && yum -y --enablerepo=C5.10-* clean all \
 	&& chmod +x /start.sh
 
 EXPOSE 5432/tcp
