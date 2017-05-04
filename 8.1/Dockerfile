@@ -6,13 +6,14 @@ MAINTAINER Thomas Edwin Santosa <thomas@katalisindonesia.com>
 VOLUME /var/lib/pgsql
 COPY start.sh /
 
+RUN localedef -f UTF-8 -i en_US en_US.UTF-8
+
+#Indonesian locale
+RUN localedef -f UTF-8 -i id_ID id_ID.UTF-8
+
 RUN rm /etc/yum.repos.d/CentOS-Base.repo
 # install postgres 8.1.23
-#RUN cat /etc/yum.repos.d/CentOS-Vault.repo
-#RUN yum --verbose --enablerepo=C5.10-* install yumex
 RUN sed -i 's/\$basearch/i386/g' /etc/yum.repos.d/CentOS-Vault.repo
-RUN yum --verbose --enablerepo=C5.10-base repolist
-RUN yum --verbose --enablerepo=C5.10-base makecache
 RUN yum --enablerepo=C5.10-base list postgresql-server
 RUN yum  --enablerepo=C5.10-base update && yum -y --enablerepo=C5.10-base install postgresql-server.i386 && yum -y --enablerepo=C5.10-base clean all \
 	&& chmod +x /start.sh
