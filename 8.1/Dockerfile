@@ -7,8 +7,8 @@ VOLUME /var/lib/pgsql
 COPY start.sh /
 
 # install postgres 8.1.23
-RUN yum -y install postgresql-server \
-	&& yum -y clean all \
+RUN yum -y --disablerepo=* --enablerepo=CentOS-Vault* install postgresql-server \
+	&& yum -y  --disablerepo=* --enablerepo=CentOS-Vault* clean all \
 	&& chmod +x /start.sh
 
 EXPOSE 5432/tcp
