@@ -8,7 +8,7 @@ COPY start.sh /
 
 # install postgres 8.1.23
 RUN yum -y --disablerepo=* --enablerepo=C5.10-base install postgresql-server \
-	&& yum -y  --disablerepo=* --enablerepo=CentOS-Vault* clean all \
+	&& yum -y  --disablerepo=* --enablerepo=C5.10-base clean all \
 	&& chmod +x /start.sh
 
 EXPOSE 5432/tcp
