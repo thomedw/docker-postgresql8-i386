@@ -7,8 +7,7 @@ VOLUME /var/lib/pgsql
 COPY start.sh /
 
 # install postgres 8.1.23
-RUN yum -y update  \
-	&& yum -y install postgresql-server \
+RUN yum -y install postgresql-server \
 	&& yum -y clean all \
 	&& chmod +x /start.sh
 
