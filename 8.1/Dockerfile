@@ -8,7 +8,7 @@ COPY start.sh /
 
 #Indonesian locale
 
-RUN rm /etc/yum.repos.d/CentOS-base.repo
+RUN rm /etc/yum.repos.d/CentOS-Base.repo
 # install postgres 8.1.23
 RUN sed -i 's/\$basearch/i386/g' /etc/yum.repos.d/CentOS-Vault.repo
 RUN yum --enablerepo=C5.10-* list postgresql-server
